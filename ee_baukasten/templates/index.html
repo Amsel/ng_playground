@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>EE Baukasten</title>
+</head>
+<body>
+
+<ul>
+    {% for ee in ee_list %}
+        <li><a href="{% url 'ee_detail' ee.id %}">{{ ee.name }}</a></li>
+    {% endfor %}
+</ul>
+
+
+</body>
+</html>
