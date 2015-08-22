@@ -10,14 +10,6 @@ class Spieler(models.Model):
         return self.name
 
 
-class EigenEntwicklung(models.Model):
-    name = models.CharField(max_length=127)
-    ersteller = models.ForeignKey(Spieler)
-
-    def __str__(self):
-        return self.name
-
-
 class Anwendungsgebiet(models.Model):
     name = models.CharField(max_length=127)
 
@@ -28,11 +20,17 @@ class Anwendungsgebiet(models.Model):
 class Effekt(models.Model):
     name = models.CharField(max_length=127)
     description = models.TextField()
-    entwicklungen = models.ManyToManyField(EigenEntwicklung)
     anwendungsgebiet = models.ForeignKey(Anwendungsgebiet)
 
     def __str__(self):
         return self.name
 
 
+class EigenEntwicklung(models.Model):
+    name = models.CharField(max_length=127)
+    ersteller = models.ForeignKey(Spieler)
+    beschreibung = models.TextField(blank=True)
+    effekte = models.ManyToManyField(Effekt)
 
+    def __str__(self):
+        return self.name

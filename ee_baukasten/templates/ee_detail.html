@@ -3,9 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <title></title>
+    <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.4/material.blue_grey-blue.min.css" />
 </head>
 <body>
     <h1>{{ ee.name }}</h1>
-    <p>{{ ee.ersteller }}</p>
+    <h4> erstellt von: {{ ee.ersteller }}</h4>
+    <p>{{ ee.beschreibung }}</p>
+    <h4>Effekte:</h4>
+    <ul>
+        {% for effekt in effekte %}
+            <li>{{ effekt.name }} - {{ effekt.description }}</li>
+        {% endfor %}
+    </ul>
+
 </body>
 </html>
