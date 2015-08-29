@@ -18,7 +18,8 @@ def ee_detail(request, ee_id):
     return render(request, template_name, {'ee': ee, 'effekte': effekte})
 
 
-def effekte_in_gruppe(request, gruppe):
-    template_name = 'group_list.html'
-    effekte = get_list_or_404(Effekt, gruppe=gruppe)
-    return render(request, template_name, {'effekte': effekte})
+def effektgruppe(request, gruppe):
+    template_name = 'effektgruppe.html'
+    effekt_gruppe = get_object_or_404(Effektgruppe, pk=gruppe)
+    effekte = get_list_or_404(Effekt.objects.filter(gruppe=gruppe))
+    return render(request, template_name, {'gruppe': effekt_gruppe, 'effekte': effekte})

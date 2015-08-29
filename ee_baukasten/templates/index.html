@@ -17,7 +17,7 @@
 <h1>Gruppen</h1>
 <ul>
     {% for gruppe in gruppen %}
-        <li> {{ gruppe.name }}</li>
+        <li> <a href="{% url 'effekt_gruppe' gruppe.id %}">{{ gruppe.name }}</a></li>
     {% endfor %}
 </ul>
 

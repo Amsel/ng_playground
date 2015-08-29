@@ -3,9 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.4/material.blue_grey-blue.min.css" />
-    <title>Effektgruppen</title>
+    <title>Effektgruppen: {{ gruppe.name }}</title>
 </head>
 <body>
+    <h1>{{ gruppe.name }}</h1>
+    <ul>
+        {% for effekt in effekte %}
+            <li>{{ effekt.name }}</li>
+        {% endfor %}
+    </ul>
 
 </body>
 </html>
