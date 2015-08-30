@@ -26,6 +26,7 @@ SECRET_KEY = 'xsu)ere8tral2m$n&z+-q!-wuf4=8m39&t8!q1-q9x%td=6!o@'
 DEBUG = True
 
 ALLOWED_HOSTS = []
+INTERNAL_IPS = ('127.0.0.1', '192.168.0.1',)
 
 
 # Application definition
@@ -38,6 +39,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'ee_baukasten',
+    'debug_toolbar',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -49,6 +51,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.security.SecurityMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
 )
 
 ROOT_URLCONF = 'ng_playground.urls'
