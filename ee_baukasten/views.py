@@ -1,7 +1,5 @@
 from django.shortcuts import render, get_object_or_404, get_list_or_404
-from .models import EigenEntwicklung, Effektgruppe
-
-# Create your views here.
+from .models import EigenEntwicklung, Effektgruppe, Effekt
 
 
 def index(request):
@@ -30,3 +28,11 @@ def effektgruppe(request, gruppe):
     return render(request,
                   template_name,
                   {'gruppe': effekt_gruppe, 'effekte': effekte})
+
+
+def effekt(request, id):
+    template_name = 'effekt.html'
+    effekt = get_object_or_404(Effekt, pk=id)
+    return render(request,
+                  template_name,
+                  {'effekt': effekt})

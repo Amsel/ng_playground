@@ -6,4 +6,6 @@ urlpatterns = [
     url(r'^$', views.index, name='index'),
     url(r'^ee/(?P<ee_id>[0-9]+)$', views.ee_detail, name='ee_detail'),
     url(r'^effektgruppe/(?P<gruppe>[0-9]+)$', views.effektgruppe, name='effekt_gruppe'),
+    url(r'^effekt/(?P<id>[0-9]+)$', views.effekt, name='effekt'),
 ]
+

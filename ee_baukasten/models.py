@@ -36,6 +36,7 @@ class Effekt(models.Model):
     description = models.TextField()
     anwendungsgebiet = models.ForeignKey(Anwendungsgebiet)
     gruppe = models.ManyToManyField(Effektgruppe)
+    genehmigt = models.BooleanField(default=False)
 
     def __str__(self):
         return self.name
