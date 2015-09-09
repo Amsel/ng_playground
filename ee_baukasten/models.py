@@ -37,7 +37,7 @@ class EffectCategory(models.Model):
 
 class Effect(models.Model):
     name = models.CharField(max_length=127)
-    description = models.TextField()
+    description = models.TextField(blank=False)
     category = models.ManyToManyField(EffectCategory)
 
     # restricts, for what the effect can be used
@@ -64,7 +64,7 @@ class Effect(models.Model):
 
 class PlayerCreation(models.Model):
     name = models.CharField(max_length=127)
-    description = models.TextField(blank=True)
+    description = models.TextField(blank=False)
 
     # assume, that the User can be always retrieved from the Character!
     creator = models.OneToOneField(Character)
