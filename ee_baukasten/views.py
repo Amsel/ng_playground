@@ -1,38 +1,39 @@
 from django.shortcuts import render, get_object_or_404, get_list_or_404
-from .models import EigenEntwicklung, Effektgruppe, Effekt
+from .models import PlayerCreation, EffectCategory, Effect
 
 
 def index(request):
     template_name = 'index.html'
-    ees = get_list_or_404(EigenEntwicklung.objects.order_by('name'))
-    gruppen = get_list_or_404(Effektgruppe.objects.all())
+    player_creations = get_list_or_404(PlayerCreation.objects.order_by('name'))
+    categories = get_list_or_404(EffectCategory.objects.all())
     return render(request,
                   template_name,
-                  {'ee_list': ees, 'gruppen': gruppen})
+                  {'ee_list': player_creations, 'gruppen': categories})
 
 
 def ee_detail(request, ee_id):
     template_name = 'ee_detail.html'
-    ee = get_object_or_404(EigenEntwicklung, pk=ee_id)
-    effekte = get_list_or_404(ee.effekte.all())
+    pc = get_object_or_404(PlayerCreation, pk=ee_id)
+    effects = get_list_or_404(pc.effekte.all())
     return render(request,
                   template_name,
-                  {'ee': ee, 'effekte': effekte})
+                  {'ee': pc, 'effekte': effects})
 
 
 def effektgruppe(request, gruppe):
     template_name = 'effektgruppe.html'
-    effekt_gruppe = get_object_or_404(Effektgruppe, pk=gruppe)
-    # effekt_set bildet die umgekehrte Richtung der m2n Beziehung ab
-    effekte = get_list_or_404(effekt_gruppe.effekt_set)
+    effect_category = get_object_or_404(EffectCategory, pk=gruppe)
+
+    # effect_set uses the m2m relation in reverse
+    effects = get_list_or_404(effect_category.effect_set)
     return render(request,
                   template_name,
-                  {'gruppe': effekt_gruppe, 'effekte': effekte})
+                  {'gruppe': effect_category, 'effekte': effects})
 
 
 def effekt(request, id):
     template_name = 'effekt.html'
-    effekt = get_object_or_404(Effekt, pk=id)
+    effekt = get_object_or_404(Effect, pk=id)
     return render(request,
                   template_name,
                   {'effekt': effekt})

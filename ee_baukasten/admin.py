@@ -4,9 +4,10 @@ from . import models
 
 # Register your models here.
 
-admin.site.register(models.Spieler)
-admin.site.register(models.EigenEntwicklung)
-admin.site.register(models.Anwendungsgebiet)
-admin.site.register(models.EETyp)
-admin.site.register(models.Effektgruppe)
-admin.site.register(models.Effekt)
+admin.site.register(models.PlayerCreation)
+admin.site.register(models.EffectCategory)
+admin.site.register(models.Effect)
+admin.site.register(models.Character)
+admin.site.register(models.PlayerCreationCategory)
+admin.site.register(models.UseCase)
+
