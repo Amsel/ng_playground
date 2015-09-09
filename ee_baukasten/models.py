@@ -5,11 +5,13 @@ from django.contrib.auth.models import User
 # can be an NPC or Player Character
 # This will move out of this app later, since it is just referenced
 class Character(models.Model):
-    first_name = models.CharField(max_length=127)
-    last_name = models.CharField(max_length=127)
+    default_name = 'unnamed'
+
+    first_name = models.CharField(max_length=127, default=default_name)
+    last_name = models.CharField(max_length=127, default=default_name)
 
     # the owner of the character
-    user = models.OneToOneField(User, null=True)
+    user = models.OneToOneField(User, blank=True, null=True)
 
     def __str__(self):
         return '{0} {1}'.format(self.first_name, self.last_name)
@@ -40,7 +42,7 @@ class EffectCategory(models.Model):
 
 class Effect(models.Model):
     name = models.CharField(max_length=127)
-    description = models.TextField(blank=False)
+    description = models.TextField(blank=True)
     category = models.ManyToManyField(EffectCategory)
 
     # restricts, for what the effect can be used
@@ -67,11 +69,11 @@ class Effect(models.Model):
 
 class PlayerCreation(models.Model):
     name = models.CharField(max_length=127)
-    description = models.TextField(blank=False)
+    description = models.TextField(blank=True)
 
     # assume, that the User can be always retrieved from the Character!
     creator = models.OneToOneField(Character)
-    category = models.ForeignKey(PlayerCreationCategory, null=True)
+    category = models.ForeignKey(PlayerCreationCategory, blank=True, null=True)
 
     effects = models.ManyToManyField(Effect)
 
