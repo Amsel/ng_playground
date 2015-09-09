@@ -33,7 +33,7 @@ def effektgruppe(request, gruppe):
 
 def effekt(request, id):
     template_name = 'effekt.html'
-    effekt = get_object_or_404(Effect, pk=id)
+    effect = get_object_or_404(Effect, pk=id)
     return render(request,
                   template_name,
-                  {'effekt': effekt})
+                  {'effekt': effect})
