@@ -9,7 +9,10 @@ class Character(models.Model):
     last_name = models.CharField(max_length=127)
 
     # the owner of the character
-    user = models.OneToOneField(User)
+    user = models.OneToOneField(User, null=True)
+
+    def __str__(self):
+        return '{0} {1}'.format(self.first_name, self.last_name)
 
 
 # generic categorization mechanism
